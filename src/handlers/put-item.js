@@ -6,6 +6,7 @@ const docClient = new dynamodb.DocumentClient();
 
 // Get the DynamoDB table name from environment variables
 const tableName = process.env.SAMPLE_TABLE;
+const { v4: uuidv4 } = require('uuid');
 
 /**
  * A simple example includes a HTTP post method to add one item to a DynamoDB table.
@@ -19,21 +20,26 @@ exports.putItemHandler = async (event) => {
 
     // Get id and name from the body of the request
     const body = JSON.parse(event.body)
-    const id = body.id;
-    const name = body.name;
+
+    console.info("body:" + body);
+    const deviceID = body.DeviceID;
+    const customerID = body.CustomerID;
+    const eventID = body.EventID;
+    const ticketID = uuidv4();
+    const created = Math.floor(new Date().getTime() / 1000);
 
     // Creates a new item, or replaces an old item with a new item
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
     var params = {
         TableName : tableName,
-        Item: { id : id, name: name }
+        Item: { id: ticketID, deviceID, customerID, eventID, created }
     };
 
     const result = await docClient.put(params).promise();
 
     const response = {
         statusCode: 200,
-        body: JSON.stringify(body)
+        body: JSON.stringify({ticketID})
     };
 
     // All log statements are written to CloudWatch
