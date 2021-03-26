@@ -71,7 +71,7 @@ Test your app:
 curl --header "Content-Type: application/json" \
   --request POST \
   --data '{"DeviceID":"fox","CustomerID":"abc","EventID":"123"}' \
-  https://[[your-id-here]].execute-api.us-east-1.amazonaws.com/Prod/ 
+  https://[[your-id-here]].execute-api.[[your-region-here]].amazonaws.com/Prod/ 
 ```
 
 
