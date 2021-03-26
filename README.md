@@ -17,6 +17,8 @@ Using infrastructure as code will ensure that configurations between environment
 
  I built this in a local account then performed a number of load tests. I performed several test runs at hundreds of requests per second and several at thousands of requests per second. The application performed adequately at these levels, however I did receive some errors on the initial test runs of larger workloads. Subsequent test runs typically showed fewer errors which lead me to believe these errors were related to cold starts. I assume provisioned concurrency would address these errors. Generated documentation below.
 
+ ### THIS IS NOT PRODUCTION QUALITY CODE ###
+
 ## How to use this app
 This project contains source code and supporting files for a serverless application that you can deploy with the AWS Serverless Application Model (AWS SAM) command line interface (CLI). It includes the following files and folders:
 
