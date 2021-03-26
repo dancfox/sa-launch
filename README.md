@@ -39,6 +39,7 @@ To use the AWS SAM CLI, you need the following tools:
 To build and deploy your application for the first time, run the following in your shell:
 
 ```bash
+npm install
 sam build
 sam deploy --guided
 ```
