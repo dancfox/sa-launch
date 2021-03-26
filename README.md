@@ -1,7 +1,9 @@
 # Serverless Ticketing App
 
 ## Notes from Dan: 
-This project was created in 2-3 hours using the Serverless Application Model (SAM). SAM generated the initial template which I then modified. I built this in a local account then performed a number of load tests. I performed several test runs at hundreds of requests per second and several at thousands of requests per second. The application performed adequately at these levels, however I did receive some errors on the initial test runs of larger workloads. Subsequent test runs typically showed fewer errors which lead me to believe these errors were related to cold starts. I assume provisioned concurrency would address these errors. Generated documentation below.
+This project was created in 2-3 hours using the Serverless Application Model (SAM). Using infrastructure as code will ensure that configurations between environments can be deployed in an identical, repeatable manner.
+
+SAM generated the initial template which I then modified. I built this in a local account then performed a number of load tests. I performed several test runs at hundreds of requests per second and several at thousands of requests per second. The application performed adequately at these levels, however I did receive some errors on the initial test runs of larger workloads. Subsequent test runs typically showed fewer errors which lead me to believe these errors were related to cold starts. I assume provisioned concurrency would address these errors. Generated documentation below.
 
 ## How to use this app
 This project contains source code and supporting files for a serverless application that you can deploy with the AWS Serverless Application Model (AWS SAM) command line interface (CLI). It includes the following files and folders:
