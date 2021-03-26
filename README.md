@@ -43,6 +43,16 @@ sam build
 sam deploy --guided
 ```
 
+Test your app:
+```
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"DeviceID":"fox","CustomerID":"abc","EventID":"123"}' \
+  https://[[your-id-here]].execute-api.us-east-1.amazonaws.com/Prod/ 
+```
+
+
+
 The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
 
 * **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
