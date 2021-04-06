@@ -3,6 +3,23 @@ Description: ticketing-app
 Transform:
 - AWS::Serverless-2016-10-31
 Resources:
+  counterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/counter.run
+      Runtime: nodejs12.x
+      MemorySize: 128
+      Timeout: 900
+      Description: Counts the tickets
+      Policies:
+      - CloudWatchPutMetricPolicy: {}
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: TicketingTable
+      Environment:
+        Variables:
+          SAMPLE_TABLE:
+            Ref: TicketingTable
   getAllItemsFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -54,16 +71,19 @@ Resources:
   putItemFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: src/handlers/put-item.putItemHandler
+      Handler: src/handlers/put-item.putItemHandler 
+      AutoPublishAlias: prod
       Runtime: nodejs12.x
       MemorySize: 128
       Timeout: 100
+      Tracing: Active
       Description: A simple example includes a HTTP post method to add one item to
         a DynamoDB table.
       Policies:
       - DynamoDBCrudPolicy:
           TableName:
             Ref: TicketingTable
+      - CloudWatchPutMetricPolicy: {}
       Environment:
         Variables:
           SAMPLE_TABLE:

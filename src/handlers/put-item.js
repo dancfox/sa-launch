@@ -1,4 +1,3 @@
-// Create clients and set shared const values outside of the handler.
 
 // Create a DocumentClient that represents the query to add an item
 const dynamodb = require('aws-sdk/clients/dynamodb');
@@ -7,6 +6,9 @@ const docClient = new dynamodb.DocumentClient();
 // Get the DynamoDB table name from environment variables
 const tableName = process.env.SAMPLE_TABLE;
 const { v4: uuidv4 } = require('uuid');
+
+console.log("process.env=" + JSON.stringify(process.env));
+console.log("handler initialization complete");
 
 /**
  * A simple example includes a HTTP post method to add one item to a DynamoDB table.
@@ -21,7 +23,7 @@ exports.putItemHandler = async (event) => {
     // Get id and name from the body of the request
     const body = JSON.parse(event.body)
 
-    console.info("body:" + body);
+    console.info("body:" + JSON.stringify(body));
     const deviceID = body.DeviceID;
     const customerID = body.CustomerID;
     const eventID = body.EventID;

@@ -1,0 +1,18 @@
+config:
+  target: "https://rppmjvu8ei.execute-api.us-east-1.amazonaws.com"
+  phases:
+    - duration: 10
+      arrivalRate: 10
+      name: Warm up
+scenarios:
+  # We define one scenario:
+  - name: "Purchase"
+    flow:
+      - post:
+          url: "/Prod/"
+          body: '{"DeviceID":"device123","CustomerID":"customer123","EventID":"event123"}'
+          # The endpoint responds with JSON, which we parse and extract a field from
+          # to use in the next request:
+          capture:
+            json: "$.results[0].ticketID"
+            as: "id"
