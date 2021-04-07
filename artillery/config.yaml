@@ -1,9 +1,16 @@
 config:
   target: "https://rppmjvu8ei.execute-api.us-east-1.amazonaws.com"
   phases:
-    - duration: 10
-      arrivalRate: 10
+    - duration: 60
+      arrivalRate: 5
       name: Warm up
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+      name: Ramp up load
+    - duration: 600
+      arrivalRate: 50
+      name: Sustained load
 scenarios:
   # We define one scenario:
   - name: "Purchase"
