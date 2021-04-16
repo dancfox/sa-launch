@@ -1,7 +1,7 @@
 # Serverless Ticketing App
 
 ## Notes from Dan: 
-This project was created in 2-3 hours using the Serverless Application Model (SAM). SAM generated the initial template which I then modified.
+This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. This project also contains scripts to schedule provision concurrency. 
 
 ```
 sam init
