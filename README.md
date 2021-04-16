@@ -1,11 +1,11 @@
 # Serverless Ticketing App
 
 ## Notes from Dan: 
-This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. This project also contains scripts to schedule provisioned concurrency. 
+This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. Artillery spins up 25 Fargate instances to achieve the target load. This project also contains scripts to schedule provisioned concurrency in order to improve startup performance. 
 
 This project uses SAM for infrastructure as code. Using infrastructure as code will ensure that configurations between environments can be deployed in an identical, repeatable manner.
 
- I built this in an AWS account then performed a number of load tests. I performed several test runs at hundreds of requests per second and at thousands of requests per second. Peak load achieved was ~2k rps. The critical throttle in this workload was DynamoDB. To support this load required  9,000 WCU's. Significantly higher loads are possible by increasing WCU.
+ I built this in an AWS account then performed a number of load tests. I performed several test runs at hundreds of requests per second and at thousands of requests per second. Peak load achieved was ~2k rps. The critical throttle in this workload was DynamoDB. To support this load required  10,000 WCU's. Significantly higher loads are possible by increasing WCU.
 
 ## How to use this app
 This project contains source code and supporting files for a serverless application that you can deploy with the AWS Serverless Application Model (AWS SAM) command line interface (CLI). It includes the following files and folders:
