@@ -7,8 +7,6 @@ This project uses SAM for infrastructure as code. Using infrastructure as code w
 
  I built this in an AWS account then performed a number of load tests. I performed several test runs at hundreds of requests per second and at thousands of requests per second. Peak load achieved was ~2k rps. The critical throttle in this workload was DynamoDB. To support this load required  9,000 WCU's. Significantly higher loads are possible by increasing WCU.
 
-[Provisioned Concurrency Blog Post](https://aws.amazon.com/blogs/compute/scheduling-aws-lambda-provisioned-concurrency-for-recurring-peak-usage/)
-
  ### THIS IS NOT PRODUCTION QUALITY CODE ###
 
 ## How to use this app
