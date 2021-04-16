@@ -3,19 +3,9 @@
 ## Notes from Dan: 
 This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. This project also contains scripts to schedule provision concurrency. 
 
-```
-sam init
+This project uses SAM for infrastructure as code. Using infrastructure as code will ensure that configurations between environments can be deployed in an identical, repeatable manner.
 
-Choose 1 - AWS Quick Start Templates
-Choose 1 - Zip
-Choose 1 - nodejs12.x
-Project name: ticketing-app
-Template selection 8 - Web Backend
-```
-
-Using infrastructure as code will ensure that configurations between environments can be deployed in an identical, repeatable manner.
-
- I built this in a local account then performed a number of load tests. I performed several test runs at hundreds of requests per second and several at thousands of requests per second. The application performed adequately at these levels, however I did receive some errors on the initial test runs of larger workloads. Subsequent test runs typically showed fewer errors which lead me to believe these errors were related to cold starts. I assume provisioned concurrency would address these errors.
+ I built this in an AWS account then performed a number of load tests. I performed several test runs at hundreds of requests per second and at thousands of requests per second. Peak load achieved was ~2k rps. The critical throttle in this workload was DynamoDB. To support this load required  9,000 WCU's. Significantly higher loads are possible by increasing WCU.
 
 [Provisioned Concurrency Blog Post](https://aws.amazon.com/blogs/compute/scheduling-aws-lambda-provisioned-concurrency-for-recurring-peak-usage/)
 
