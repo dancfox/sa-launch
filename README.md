@@ -7,8 +7,6 @@ This project uses SAM for infrastructure as code. Using infrastructure as code w
 
  I built this in an AWS account then performed a number of load tests. I performed several test runs at hundreds of requests per second and at thousands of requests per second. Peak load achieved was ~2k rps. The critical throttle in this workload was DynamoDB. To support this load required  9,000 WCU's. Significantly higher loads are possible by increasing WCU.
 
- ### THIS IS NOT PRODUCTION QUALITY CODE ###
-
 ## How to use this app
 This project contains source code and supporting files for a serverless application that you can deploy with the AWS Serverless Application Model (AWS SAM) command line interface (CLI). It includes the following files and folders:
 
