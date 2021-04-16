@@ -1,7 +1,7 @@
 # Serverless Ticketing App
 
 ## Notes from Dan: 
-This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. This project also contains scripts to schedule provision concurrency. 
+This project creates an architecture that can support a high volume of ticket sale transactions (6MM in one hour or 1,666 RPS). We use artillery to simulate load. This project also contains scripts to schedule provisioned concurrency. 
 
 This project uses SAM for infrastructure as code. Using infrastructure as code will ensure that configurations between environments can be deployed in an identical, repeatable manner.
 
